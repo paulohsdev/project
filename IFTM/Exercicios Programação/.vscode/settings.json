@@ -1,0 +1,11 @@
+{
+    "[c]":{
+        "files.autoGuessEncoding":false, 
+        "files.encoding":"iso88591",
+    },
+    "files.associations": {
+        "locale.h": "c",
+        "math.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

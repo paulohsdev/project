@@ -1,0 +1,15 @@
+{
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#4315bd"
+    },
+    "files.associations": {
+        "cmath": "c",
+        "math.h": "c",
+        "locale.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "Struc.C": "cpp",
+        "algorithm": "c",
+        "windows.h": "c"
+    }
+}
