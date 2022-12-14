@@ -57,6 +57,10 @@ void cargos()
         printf("Digite o codigo do cargo que deseja alterar ");
         scanf("%d", &codpesquisa);
 
+        cargo[0].somacargo = 0;
+        cargo[1].somacargo = 0;
+        cargo[2].somacargo = 0;
+
         for (i = 0; i < 3; i++)
         {
             if (cargo[i].codcargo == codpesquisa)
@@ -73,21 +77,21 @@ void cargos()
                 printf("Cargo: %d\n", cargo[i].codcargo);
                 printf("Salário: %.2f\n", cargo[i].salario);
                 system("pause");
-            }
-        }
-        for (i = 0; i < cad[i].stop; i++)
-        {
-            if (cad[i].codcargo == 1)
-            {
-                cad[i].salariofunc = cargo[0].salario;
-            }
-            if (cad[i].codcargo == 2)
-            {
-                cad[i].salariofunc = cargo[1].salario;
-            }
-            if (cad[i].codcargo == 3)
-            {
-                cad[i].salariofunc = cargo[2].salario;
+                if (cad[i].codcargo == 1)
+                {
+                    cad[i].salariofunc = cargo[0].salario;
+                    cargo[0].somacargo = cargo[0].somacargo + cad[i].salariofunc;
+                }
+                if (cad[i].codcargo == 2)
+                {
+                    cad[i].salariofunc = cargo[1].salario;
+                    cargo[1].somacargo = cargo[1].somacargo + cad[i].salariofunc;
+                }
+                if (cad[i].codcargo == 3)
+                {
+                    cad[i].salariofunc = cargo[2].salario;
+                    cargo[2].somacargo = cargo[2].somacargo + cad[i].salariofunc;
+                }
             }
         }
     }
