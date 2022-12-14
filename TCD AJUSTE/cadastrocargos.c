@@ -38,10 +38,10 @@ void cargos()
         {
             for (i = 0; i < 3; i++)
             {
-                printf("Digite o código do cargo: ");
+                printf("Digite o cï¿½digo do cargo: ");
                 scanf("%d", &cargo[i].codcargo);
 
-                printf("Digite o salário do cargo: ");
+                printf("Digite o salï¿½rio do cargo: ");
                 scanf("%f", &cargo[i].salario);
             }
             break;
@@ -49,7 +49,7 @@ void cargos()
 
         else
         {
-            printf("Cargos já cadastrados!");
+            printf("Cargos jï¿½ cadastrados!");
             system("pause");
             break;
         }
@@ -67,16 +67,16 @@ void cargos()
             if (cargo[i].codcargo == codpesquisa)
             {
                 printf("Cargo: %d\n", cargo[i].codcargo);
-                printf("Salário: %.2f\n", cargo[i].salario);
+                printf("Salï¿½rio: %.2f\n", cargo[i].salario);
 
-                printf("Digite o novo cádigo do cargo: ");
+                printf("Digite o novo cï¿½digo do cargo: ");
                 scanf("%d", &cargo[i].codcargo);
 
-                printf("Digite o novo salário do cargo: ");
+                printf("Digite o novo salï¿½rio do cargo: ");
                 scanf("%f", &cargo[i].salario);
 
                 printf("Cargo: %d\n", cargo[i].codcargo);
-                printf("Salário: %.2f\n", cargo[i].salario);
+                printf("Salï¿½rio: %.2f\n", cargo[i].salario);
                 system("pause");
                 if (cad[i].codcargo == 1)
                 {
