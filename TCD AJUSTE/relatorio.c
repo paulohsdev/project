@@ -26,26 +26,6 @@ void relatorio()
     setlocale(LC_ALL, "");
     system("cls");
 
-    // for (i = 0; cad[i].stop != 0; i++)
-    // {
-
-    //     if (cad[i].codcargo == 1)
-    //     {
-    //         cad[i].salariofunc = cargo[0].salario;
-    //         cad[i].salariocop = cad[i].salariofunc;
-    //     }
-    //     if (cad[i].codcargo == 2)
-    //     {
-    //         cad[i].salariofunc = cargo[1].salario;
-    //         cad[i].salariocop = cad[i].salariofunc;
-    //     }
-    //     if (cad[i].codcargo == 3)
-    //     {
-    //         cad[i].salariofunc = cargo[2].salario;
-    //         cad[i].salariocop = cad[i].salariofunc;
-    //     }
-    // }
-
     for (i = 0; i < cad[i].stop; i++)
     {
         printf("Nome: %s", cad[i].nomefunc);

@@ -8,6 +8,7 @@ typedef struct
     int codcargo;
     float salario, somacargo;
 } car;
+car cargo[3];
 
 typedef struct
 {
@@ -19,11 +20,10 @@ cadastro cad[10];
 
 void exibirsalario()
 {
-    car cargo[3];
-
-    setlocale(LC_ALL, "");
 
     int i, op;
+
+    setlocale(LC_ALL, "");
 
     printf("1 - Soma dos cargos 1\n");
     printf("2 - Soma dos cargos 2\n");

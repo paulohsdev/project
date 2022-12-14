@@ -8,6 +8,7 @@ typedef struct
     int codcargo;
     float salario, somacargo;
 } car;
+
 car cargo[3];
 
 typedef struct
@@ -28,8 +29,8 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
     cargo[0].somacargo = 0;
     cargo[1].somacargo = 0;
     cargo[2].somacargo = 0;
-    printf("tESTE 2asdasdsa");
-    printf("Teste");
+
+    float somacargo1 = 0, somacargo2 = 0, somacargo3 = 0;
 
     printf("1 - Cadastrar funcionário:\n");
     printf("2 - Atualizar funcionário\n");
@@ -100,6 +101,7 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
             scanf("%d", &op);
 
         } while (op == 1);
+
         for (i = 0; i < cad[i].stop; i++)
         {
             if (cad[i].codcargo == 1)
@@ -125,6 +127,7 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
         for (i = 0; i < cad[i].stop; i++)
         {
             printf("Nome: %sSalário: %.2f\n", cad[i].nomefunc, cad[i].salariofunc);
+            printf("Soma do cargo 1 %.2f\n", cargo[0].somacargo);
         }
         system("pause");
 

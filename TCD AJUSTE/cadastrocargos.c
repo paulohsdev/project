@@ -10,6 +10,15 @@ typedef struct
 } car;
 car cargo[3];
 
+typedef struct
+{
+    char nomefunc[50], rua[50], bairro[50], estado[3], cidade[50];
+    int codfunc, codcargo, stop, nrua, cep;
+    float salariofunc, mediasalarial;
+
+} cadastro;
+cadastro cad[10];
+
 void cargos()
 {
 
@@ -55,7 +64,7 @@ void cargos()
                 printf("Cargo: %d\n", cargo[i].codcargo);
                 printf("Salário: %.2f\n", cargo[i].salario);
 
-                printf("Digite o novo código do cargo: ");
+                printf("Digite o novo cádigo do cargo: ");
                 scanf("%d", &cargo[i].codcargo);
 
                 printf("Digite o novo salário do cargo: ");
@@ -64,6 +73,21 @@ void cargos()
                 printf("Cargo: %d\n", cargo[i].codcargo);
                 printf("Salário: %.2f\n", cargo[i].salario);
                 system("pause");
+            }
+        }
+        for (i = 0; i < cad[i].stop; i++)
+        {
+            if (cad[i].codcargo == 1)
+            {
+                cad[i].salariofunc = cargo[0].salario;
+            }
+            if (cad[i].codcargo == 2)
+            {
+                cad[i].salariofunc = cargo[1].salario;
+            }
+            if (cad[i].codcargo == 3)
+            {
+                cad[i].salariofunc = cargo[2].salario;
             }
         }
     }

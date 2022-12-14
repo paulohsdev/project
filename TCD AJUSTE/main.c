@@ -11,22 +11,18 @@ void relatorio();
 void exibirsalario();
 void mediasalarial();
 
-// * REGIÃO DAS STRUCTS
 typedef struct
 {
     int codcargo;
     float salario, somacargo;
-
 } car;
 car cargo[3];
+
+// * REGIÃO DAS STRUCTS
 
 int main()
 {
     int op;
-
-    cargo[0].codcargo = 0;
-    cargo[1].codcargo = 0;
-    cargo[2].codcargo = 0;
 
     setlocale(LC_ALL, "");
     do
@@ -57,6 +53,9 @@ int main()
             relatorio();
             break;
         case 5:
+            cargo[0].somacargo;
+            cargo[1].somacargo;
+            cargo[2].somacargo;
             exibirsalario();
             break;
         case 6:

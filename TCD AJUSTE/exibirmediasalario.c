@@ -27,7 +27,6 @@ void mediasalarial()
     {
         aux++;
         media = cad[i].salariofunc + media;
-        printf("O valor da média  é: %.2f\n", media);
     }
 
     media = media / aux;
