@@ -26,6 +26,7 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
     int i = 0, j = 0, op, painel, codpesquisa, r = 0, y;
     setlocale(LC_ALL, "");
 
+    // SOMACARGO USADO PARA DIVIDIR O SALÁRIO TOTAL POR CARGOS
     cargo[0].somacargo = 0;
     cargo[1].somacargo = 0;
     cargo[2].somacargo = 0;
@@ -39,17 +40,17 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
     switch (painel)
     {
 
-    case 1:
+    case 1: // CADASTRO DOS FUNCIONÁRIOS
         system("cls");
         do
         {
             r++;
-            cad[i].stop = r;
+            cad[i].stop = r; // VÁRIAVEL DE CONTROLE PARA BUSCA E PARADA
 
             printf("Digite o código do funcionário: ");
             scanf("%d", &cad[i].codfunc);
 
-            for (j = 0; j < cad[j].stop; j++)
+            for (j = 0; j < cad[j].stop; j++) // VERIFICANDO SE TEM ALGUM CÓDIGO QUE JÁ ESTÁ SENDO USADO
             {
                 for (y = j + 1; y < cad[y].stop; y++)
                 {
@@ -100,9 +101,9 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
             printf("2 - Sair;\n");
             scanf("%d", &op);
 
-        } while (op == 1);
+        } while (op == 1); // VARIAVEL DE STOP DE CADASTRO
 
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < cad[i].stop; i++) // ATRIBUINDO O SALARIO E CALCULANDO A MEDIA SALARIAL E SOMA POR CARGO
         {
             if (cad[i].codcargo == 1)
             {
@@ -124,21 +125,21 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
             }
         }
 
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < cad[i].stop; i++) // MOSTRANDO OS CADASTROS
         {
             printf("Nome: %sSalário: %.2f\n", cad[i].nomefunc, cad[i].salariofunc);
-            printf("Soma do cargo 1 %.2f\n", cargo[0].somacargo);
         }
         system("pause");
 
         break;
-    case 2:
 
-        printf("Digite o código do funcionário que deseja alterar: "); // * ALTERAÇÃO DE FUNCIONÁRIO
+    case 2: // ALTERAÇÃO DO CADASTRO DE UM FUNCIONÁRIO
+
+        printf("Digite o código do funcionário que deseja alterar: ");
         scanf("%d", &codpesquisa);
         system("cls");
 
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < cad[i].stop; i++) // BUSCA DO FUNCIONÁRIO
         {
             if (codpesquisa == cad[i].codfunc)
             {
@@ -175,7 +176,7 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
                 printf("Digite o CEP:");
                 scanf("%d", &cad[i].cep);
 
-                for (i = 0; i < cad[i].stop; i++)
+                for (i = 0; i < cad[i].stop; i++) // ATRIBUINDO NOVO SALÁRIO SE O CARGO FOR ALTERADO
                 {
 
                     if (cad[i].codcargo == 1)
@@ -198,7 +199,7 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
         }
         system("cls");
 
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < cad[i].stop; i++) // MOSTRANDO A ALTERAÇÃO FEITA
         {
             printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }

@@ -17,7 +17,7 @@
 
 {
     "[c]":{
-        "files.autoGuessEncoding":false, 
+        "files.autoGuessEncoding":true, 
         "files.encoding":"iso88591",
     },
     "files.associations": {

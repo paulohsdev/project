@@ -44,10 +44,10 @@ void ordenacao()
             for (y = x + 1; y < cad[y].stop; y++)
             {
 
-                if (strcmp(cad[x].nomefunc, cad[y].nomefunc) > 0)
+                if (strcmp(cad[x].nomefunc, cad[y].nomefunc) > 0) // VERIFICA QUAL NOME É MAIOR
                 {
                     fflush(stdin);
-                    strcpy(aux, cad[x].cidade);
+                    strcpy(aux, cad[x].cidade); // TROCA AS VARIAVEIS DE LUGAR
                     strcpy(cad[x].cidade, cad[y].cidade);
                     strcpy(cad[y].cidade, aux);
 
@@ -90,7 +90,7 @@ void ordenacao()
             }
         }
 
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < cad[i].stop; i++) // EXIBIÇÃO ORDENADA DE A-Z
         {
             printf("\nNome: %s", cad[i].nomefunc);
             printf("Rua: %s", cad[i].rua);
@@ -173,13 +173,13 @@ void ordenacao()
 
         system("pause");
         break;
-    case 3: // * ORDENAR SALÁRIO CRESCENTE
+    case 3:
         system("cls");
         for (x = 0; cad[x].codfunc != 0; x++)
         {
             for (y = x + 1; cad[y].codfunc != 0; y++)
             {
-                if (cad[x].salariofunc > cad[y].salariofunc)
+                if (cad[x].salariofunc > cad[y].salariofunc) // VERIFICA QUAL SALÁRIO É MAIOR
                 {
                     fflush(stdin);
                     strcpy(aux, cad[x].cidade);
@@ -225,7 +225,7 @@ void ordenacao()
             }
         }
 
-        for (i = 0; cad[i].codfunc != 0; i++)
+        for (i = 0; cad[i].codfunc != 0; i++) // EXIBIÇÃO POR ORDEM CRESCENTE DO SALÁRIO
         {
             printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }
@@ -238,7 +238,7 @@ void ordenacao()
         {
             for (y = x + 1; cad[y].codfunc != 0; y++)
             {
-                if (cad[x].salariofunc < cad[y].salariofunc)
+                if (cad[x].salariofunc < cad[y].salariofunc) // VERIFICA QUAL SALÁRIO É MENOR
                 {
                     fflush(stdin);
                     strcpy(aux, cad[x].cidade);
@@ -284,7 +284,7 @@ void ordenacao()
             }
         }
 
-        for (i = 0; cad[i].codfunc != 0; i++)
+        for (i = 0; cad[i].codfunc != 0; i++) // EXIBIÇÃO POR ORDEM DECRESCENTE DO SALÁRIO
         {
             printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }

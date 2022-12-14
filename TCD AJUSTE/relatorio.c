@@ -26,7 +26,7 @@ void relatorio()
     setlocale(LC_ALL, "");
     system("cls");
 
-    for (i = 0; i < cad[i].stop; i++)
+    for (i = 0; i < cad[i].stop; i++) // EMITE UM RELATÓRIO DE TODOS OS CADASTRADOS
     {
         printf("Nome: %s", cad[i].nomefunc);
         printf("Codigo: %d\n", cad[i].codfunc);

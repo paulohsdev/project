@@ -18,7 +18,7 @@ typedef struct
 } cadastro;
 cadastro cad[10];
 
-void mediasalarial()
+void mediasalarial() // EXIBINDO A MÉDIA SALÁRIAL
 {
     int i, aux = 0;
     float media = 0;

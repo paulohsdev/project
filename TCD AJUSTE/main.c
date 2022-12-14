@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <windows.h>
 
+//  REGIÃO DAS FUNÇÕES
+
 void cargos();
 void cadastrofunc();
 void ordenacao();
@@ -11,13 +13,12 @@ void relatorio();
 void exibirsalario();
 void mediasalarial();
 
-// * REGIÃO DAS STRUCTS
-
 int main()
 {
     int op;
 
     setlocale(LC_ALL, "");
+
     do
     {
         system("cls");
