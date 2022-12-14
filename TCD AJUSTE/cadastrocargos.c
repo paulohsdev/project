@@ -31,17 +31,17 @@ void cargos()
     printf("teste;");
     scanf("%d", &op);
 
-    switch (op)
+    switch (op) // CADASTRO DOS CARGOS DA EMPRESA
     {
     case 1:
         if (cargo[i].codcargo == 0)
         {
             for (i = 0; i < 3; i++)
             {
-                printf("Digite o cï¿½digo do cargo: ");
+                printf("Digite o código do cargo: ");
                 scanf("%d", &cargo[i].codcargo);
 
-                printf("Digite o salï¿½rio do cargo: ");
+                printf("Digite o salário do cargo: ");
                 scanf("%f", &cargo[i].salario);
             }
             break;
@@ -49,12 +49,12 @@ void cargos()
 
         else
         {
-            printf("Cargos jï¿½ cadastrados!");
+            printf("Cargos já cadastrados!");
             system("pause");
             break;
         }
 
-    case 2:
+    case 2: // ALTERAÇÃO DOS CARGOS POR PESQUISA BINÁRIA
         printf("Digite o codigo do cargo que deseja alterar ");
         scanf("%d", &codpesquisa);
 
@@ -67,18 +67,18 @@ void cargos()
             if (cargo[i].codcargo == codpesquisa)
             {
                 printf("Cargo: %d\n", cargo[i].codcargo);
-                printf("Salï¿½rio: %.2f\n", cargo[i].salario);
+                printf("salário: %.2f\n", cargo[i].salario);
 
                 printf("Digite o novo cï¿½digo do cargo: ");
                 scanf("%d", &cargo[i].codcargo);
 
-                printf("Digite o novo salï¿½rio do cargo: ");
+                printf("Digite o novo salário do cargo: ");
                 scanf("%f", &cargo[i].salario);
 
                 printf("Cargo: %d\n", cargo[i].codcargo);
-                printf("Salï¿½rio: %.2f\n", cargo[i].salario);
+                printf("salário: %.2f\n", cargo[i].salario);
                 system("pause");
-                if (cad[i].codcargo == 1)
+                if (cad[i].codcargo == 1) // ALTERANDO TAMBÉM O SALÁRIO DOS FUNCIONÁRIOS
                 {
                     cad[i].salariofunc = cargo[0].salario;
                     cargo[0].somacargo = cargo[0].somacargo + cad[i].salariofunc;

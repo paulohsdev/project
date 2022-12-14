@@ -23,7 +23,7 @@ void exibirsalario()
 
     int i, op;
 
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, ""); // EXIBINDO A SOMA DE TODOS OS FUNCIONÁRIOS DE UM DETERMINADO CARGO
 
     printf("1 - Soma dos cargos 1\n");
     printf("2 - Soma dos cargos 2\n");
