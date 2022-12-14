@@ -28,6 +28,7 @@ void cargos()
 
     printf("1 - Cadastrar cargos\n");
     printf("2 - Alterar cargos\n");
+    printf("teste;");
     scanf("%d", &op);
 
     switch (op)
