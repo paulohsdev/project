@@ -142,7 +142,6 @@ int main()
         printf("Cidade: %s\n", cad[i].cidade);
         printf("CPF: %d\n", cad[i].cpf);
         printf("Telefone: %d\n", cad[i].telefone);
-        printf("Teste");
     }
     printf("O valor total desembolsado pela cooperativa é: %.2f\n", totaldesembolso);
 }
