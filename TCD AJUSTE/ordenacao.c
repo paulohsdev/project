@@ -26,8 +26,6 @@ int stop;
 void ordenacao()
 {
 
-    printf("Agora deu");
-
     int op, i, j, x, y, r;
 
     setlocale(LC_ALL, "");
