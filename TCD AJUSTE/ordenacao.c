@@ -27,6 +27,7 @@ void ordenacao()
 {
 
     printf("Teste");
+    printf("Boss");
 
     int op, i, j, x, y, r;
 
