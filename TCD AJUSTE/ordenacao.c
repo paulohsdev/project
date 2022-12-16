@@ -23,6 +23,8 @@ car aux1;
 
 int stop;
 
+printf("Teste do Boss");
+
 void ordenacao()
 {
 
