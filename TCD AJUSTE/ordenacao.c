@@ -18,13 +18,15 @@ typedef struct
 } cadastro;
 
 cadastro cad[10];
-char aux[50];
+cadastro aux;
+car aux1;
+
+int stop;
 
 void ordenacao()
 {
 
-    int op, i, j, x, y, r, aux1;
-    float aux2;
+    int op, i, j, x, y, r;
 
     setlocale(LC_ALL, "");
 
@@ -39,58 +41,25 @@ void ordenacao()
     case 1: // * CLASSIFICAR ORDEM ALFABÉTICA A-Z
         system("cls");
 
-        for (x = 0; x < cad[x].stop; x++)
+        for (x = 0; x < stop; x++)
         {
-            for (y = x + 1; y < cad[y].stop; y++)
+            for (y = x + 1; y < stop; y++)
             {
 
                 if (strcmp(cad[x].nomefunc, cad[y].nomefunc) > 0) // VERIFICA QUAL NOME É MAIOR
                 {
-                    fflush(stdin);
-                    strcpy(aux, cad[x].cidade); // TROCA AS VARIAVEIS DE LUGAR
-                    strcpy(cad[x].cidade, cad[y].cidade);
-                    strcpy(cad[y].cidade, aux);
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    strcpy(aux, cad[x].nomefunc);
-                    strcpy(cad[x].nomefunc, cad[y].nomefunc);
-                    strcpy(cad[y].nomefunc, aux);
-
-                    strcpy(aux, cad[x].rua);
-                    strcpy(cad[x].rua, cad[y].rua);
-                    strcpy(cad[y].rua, aux);
-
-                    strcpy(aux, cad[x].bairro);
-                    strcpy(cad[x].bairro, cad[y].bairro);
-                    strcpy(cad[y].bairro, aux);
-
-                    strcpy(aux, cad[x].estado);
-                    strcpy(cad[x].estado, cad[y].estado);
-                    strcpy(cad[y].estado, aux);
-
-                    aux1 = cad[x].cep;
-                    cad[x].cep = cad[y].cep;
-                    cad[y].cep = aux1;
-
-                    aux1 = cad[x].codcargo;
-                    cad[x].codcargo = cad[y].codcargo;
-                    cad[y].codcargo = aux1;
-
-                    aux1 = cad[x].codfunc;
-                    cad[x].codfunc = cad[y].codfunc;
-                    cad[y].codfunc = aux1;
-
-                    aux1 = cad[x].nrua;
-                    cad[x].nrua = cad[y].nrua;
-                    cad[y].nrua = aux1;
-
-                    aux2 = cad[x].salariofunc;
-                    cad[x].salariofunc = cad[y].salariofunc;
-                    cad[y].salariofunc = aux2;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
 
-        for (i = 0; i < cad[i].stop; i++) // EXIBIÇÃO ORDENADA DE A-Z
+        for (i = 0; i < stop; i++) // EXIBIÇÃO ORDENADA DE A-Z
         {
             printf("\nNome: %s", cad[i].nomefunc);
             printf("Rua: %s", cad[i].rua);
@@ -108,56 +77,23 @@ void ordenacao()
         break;
     case 2: // * CLASSIFICAR ORDEM ALFABÉTICA Z-A
         system("cls");
-        for (x = 0; cad[x].codfunc != 0; x++)
+        for (x = 0; x < stop; x++)
         {
-            for (y = x + 1; cad[y].codfunc != 0; y++)
+            for (y = x + 1; y < stop; y++)
             {
                 if (strcmp(cad[x].nomefunc, cad[y].nomefunc) < 0)
                 {
-                    fflush(stdin);
-                    strcpy(aux, cad[x].cidade);
-                    strcpy(cad[x].cidade, cad[y].cidade);
-                    strcpy(cad[y].cidade, aux);
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    strcpy(aux, cad[x].nomefunc);
-                    strcpy(cad[x].nomefunc, cad[y].nomefunc);
-                    strcpy(cad[y].nomefunc, aux);
-
-                    strcpy(aux, cad[x].rua);
-                    strcpy(cad[x].rua, cad[y].rua);
-                    strcpy(cad[y].rua, aux);
-
-                    strcpy(aux, cad[x].bairro);
-                    strcpy(cad[x].bairro, cad[y].bairro);
-                    strcpy(cad[y].bairro, aux);
-
-                    strcpy(aux, cad[x].estado);
-                    strcpy(cad[x].estado, cad[y].estado);
-                    strcpy(cad[y].estado, aux);
-
-                    aux1 = cad[x].cep;
-                    cad[x].cep = cad[y].cep;
-                    cad[y].cep = aux1;
-
-                    aux1 = cad[x].codcargo;
-                    cad[x].codcargo = cad[y].codcargo;
-                    cad[y].codcargo = aux1;
-
-                    aux1 = cad[x].codfunc;
-                    cad[x].codfunc = cad[y].codfunc;
-                    cad[y].codfunc = aux1;
-
-                    aux1 = cad[x].nrua;
-                    cad[x].nrua = cad[y].nrua;
-                    cad[y].nrua = aux1;
-
-                    aux2 = cad[x].salariofunc;
-                    cad[x].salariofunc = cad[y].salariofunc;
-                    cad[y].salariofunc = aux2;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < stop; i++)
         {
             printf("\nNome: %s", cad[i].nomefunc);
             printf("Rua: %s", cad[i].rua);
@@ -175,57 +111,24 @@ void ordenacao()
         break;
     case 3:
         system("cls");
-        for (x = 0; cad[x].codfunc != 0; x++)
+        for (x = 0; x < stop; x++)
         {
-            for (y = x + 1; cad[y].codfunc != 0; y++)
+            for (y = x + 1; y < stop; y++)
             {
-                if (cad[x].salariofunc > cad[y].salariofunc) // VERIFICA QUAL SALÁRIO É MAIOR
+                if (cad[x].salariofunc > cad[y].salariofunc) // VERIFICA QUAL SALÁRIO É MENOR
                 {
-                    fflush(stdin);
-                    strcpy(aux, cad[x].cidade);
-                    strcpy(cad[x].cidade, cad[y].cidade);
-                    strcpy(cad[y].cidade, aux);
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    strcpy(aux, cad[x].nomefunc);
-                    strcpy(cad[x].nomefunc, cad[y].nomefunc);
-                    strcpy(cad[y].nomefunc, aux);
-
-                    strcpy(aux, cad[x].rua);
-                    strcpy(cad[x].rua, cad[y].rua);
-                    strcpy(cad[y].rua, aux);
-
-                    strcpy(aux, cad[x].bairro);
-                    strcpy(cad[x].bairro, cad[y].bairro);
-                    strcpy(cad[y].bairro, aux);
-
-                    strcpy(aux, cad[x].estado);
-                    strcpy(cad[x].estado, cad[y].estado);
-                    strcpy(cad[y].estado, aux);
-
-                    aux1 = cad[x].cep;
-                    cad[x].cep = cad[y].cep;
-                    cad[y].cep = aux1;
-
-                    aux1 = cad[x].codcargo;
-                    cad[x].codcargo = cad[y].codcargo;
-                    cad[y].codcargo = aux1;
-
-                    aux1 = cad[x].codfunc;
-                    cad[x].codfunc = cad[y].codfunc;
-                    cad[y].codfunc = aux1;
-
-                    aux1 = cad[x].nrua;
-                    cad[x].nrua = cad[y].nrua;
-                    cad[y].nrua = aux1;
-
-                    aux2 = cad[x].salariofunc;
-                    cad[x].salariofunc = cad[y].salariofunc;
-                    cad[y].salariofunc = aux2;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
 
-        for (i = 0; cad[i].codfunc != 0; i++) // EXIBIÇÃO POR ORDEM CRESCENTE DO SALÁRIO
+        for (i = 0; i < stop; i++) // EXIBIÇÃO POR ORDEM CRESCENTE DO SALÁRIO
         {
             printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }
@@ -234,57 +137,24 @@ void ordenacao()
 
     case 4: // * SALÁRIO DECRESCENTE
         system("cls");
-        for (x = 0; cad[x].codfunc != 0; x++)
+        for (x = 0; x < stop; x++)
         {
-            for (y = x + 1; cad[y].codfunc != 0; y++)
+            for (y = x + 1; y < stop; y++)
             {
                 if (cad[x].salariofunc < cad[y].salariofunc) // VERIFICA QUAL SALÁRIO É MENOR
                 {
-                    fflush(stdin);
-                    strcpy(aux, cad[x].cidade);
-                    strcpy(cad[x].cidade, cad[y].cidade);
-                    strcpy(cad[y].cidade, aux);
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    strcpy(aux, cad[x].nomefunc);
-                    strcpy(cad[x].nomefunc, cad[y].nomefunc);
-                    strcpy(cad[y].nomefunc, aux);
-
-                    strcpy(aux, cad[x].rua);
-                    strcpy(cad[x].rua, cad[y].rua);
-                    strcpy(cad[y].rua, aux);
-
-                    strcpy(aux, cad[x].bairro);
-                    strcpy(cad[x].bairro, cad[y].bairro);
-                    strcpy(cad[y].bairro, aux);
-
-                    strcpy(aux, cad[x].estado);
-                    strcpy(cad[x].estado, cad[y].estado);
-                    strcpy(cad[y].estado, aux);
-
-                    aux1 = cad[x].cep;
-                    cad[x].cep = cad[y].cep;
-                    cad[y].cep = aux1;
-
-                    aux1 = cad[x].codcargo;
-                    cad[x].codcargo = cad[y].codcargo;
-                    cad[y].codcargo = aux1;
-
-                    aux1 = cad[x].codfunc;
-                    cad[x].codfunc = cad[y].codfunc;
-                    cad[y].codfunc = aux1;
-
-                    aux1 = cad[x].nrua;
-                    cad[x].nrua = cad[y].nrua;
-                    cad[y].nrua = aux1;
-
-                    aux2 = cad[x].salariofunc;
-                    cad[x].salariofunc = cad[y].salariofunc;
-                    cad[y].salariofunc = aux2;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
 
-        for (i = 0; cad[i].codfunc != 0; i++) // EXIBIÇÃO POR ORDEM DECRESCENTE DO SALÁRIO
+        for (i = 0; i < stop; i++) // EXIBIÇÃO POR ORDEM DECRESCENTE DO SALÁRIO
         {
             printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }

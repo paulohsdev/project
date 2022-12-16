@@ -17,13 +17,17 @@ typedef struct
     float salariofunc, mediasalarial;
 } cadastro;
 cadastro cad[10];
+int stop;
+
+cadastro aux;
+car aux1;
 
 void mediasalarial() // EXIBINDO A MÉDIA SALÁRIAL
 {
     int i, aux = 0;
     float media = 0;
 
-    for (i = 0; i < cad[i].stop; i++)
+    for (i = 0; i < stop; i++)
     {
         aux++;
         media = cad[i].salariofunc + media;

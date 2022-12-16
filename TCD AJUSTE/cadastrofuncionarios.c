@@ -18,7 +18,12 @@ typedef struct
     float salariofunc, mediasalarial;
 
 } cadastro;
+
 cadastro cad[10];
+cadastro aux;
+car aux1;
+
+int stop = 0;
 
 void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
 {
@@ -27,11 +32,10 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
     setlocale(LC_ALL, "");
 
     // SOMACARGO USADO PARA DIVIDIR O SALÁRIO TOTAL POR CARGOS
+
     cargo[0].somacargo = 0;
     cargo[1].somacargo = 0;
     cargo[2].somacargo = 0;
-
-    float somacargo1 = 0, somacargo2 = 0, somacargo3 = 0;
 
     printf("1 - Cadastrar funcionário:\n");
     printf("2 - Atualizar funcionário\n");
@@ -44,15 +48,15 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
         system("cls");
         do
         {
-            r++;
+            stop++;
             cad[i].stop = r; // VÁRIAVEL DE CONTROLE PARA BUSCA E PARADA
 
             printf("Digite o código do funcionário: ");
             scanf("%d", &cad[i].codfunc);
 
-            for (j = 0; j < cad[j].stop; j++) // VERIFICANDO SE TEM ALGUM CÓDIGO QUE JÁ ESTÁ SENDO USADO
+            for (j = 0; j < stop; j++) // VERIFICANDO SE TEM ALGUM CÓDIGO QUE JÁ ESTÁ SENDO USADO
             {
-                for (y = j + 1; y < cad[y].stop; y++)
+                for (y = j + 1; y < stop; y++)
                 {
                     while (cad[j].codfunc == cad[y].codfunc)
                     {
@@ -103,7 +107,7 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
 
         } while (op == 1); // VARIAVEL DE STOP DE CADASTRO
 
-        for (i = 0; i < cad[i].stop; i++) // ATRIBUINDO O SALARIO E CALCULANDO A MEDIA SALARIAL E SOMA POR CARGO
+        for (i = 0; i < stop; i++) // ATRIBUINDO O SALARIO E CALCULANDO A MEDIA SALARIAL E SOMA POR CARGO
         {
             if (cad[i].codcargo == 1)
             {
@@ -119,13 +123,14 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
             }
             if (cad[i].codcargo == 3)
             {
+
                 cad[i].salariofunc = cargo[2].salario;
                 cargo[2].somacargo = cargo[2].somacargo + cad[i].salariofunc;
                 cad[i].mediasalarial = cad[i].mediasalarial + cad[i].salariofunc;
             }
         }
 
-        for (i = 0; i < cad[i].stop; i++) // MOSTRANDO OS CADASTROS
+        for (i = 0; i < stop; i++) // MOSTRANDO OS CADASTROS
         {
             printf("Nome: %sSalário: %.2f\n", cad[i].nomefunc, cad[i].salariofunc);
         }
@@ -139,7 +144,7 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
         scanf("%d", &codpesquisa);
         system("cls");
 
-        for (i = 0; i < cad[i].stop; i++) // BUSCA DO FUNCIONÁRIO
+        for (i = 0; i < stop; i++) // BUSCA DO FUNCIONÁRIO
         {
             if (codpesquisa == cad[i].codfunc)
             {
@@ -176,30 +181,33 @@ void cadastrofunc() // * CADASTRO DE FUNCIONÁRIO
                 printf("Digite o CEP:");
                 scanf("%d", &cad[i].cep);
 
-                for (i = 0; i < cad[i].stop; i++) // ATRIBUINDO NOVO SALÁRIO SE O CARGO FOR ALTERADO
+                for (i = 0; i < stop; i++) // ATRIBUINDO NOVO SALÁRIO SE O CARGO FOR ALTERADO
                 {
 
                     if (cad[i].codcargo == 1)
                     {
+
                         cad[i].salariofunc = cargo[0].salario;
-                        cargo[0].somacargo = cargo[0].somacargo + cad[i].salariofunc;
+                        cargo[0].somacargo = cad[i].salariofunc + cargo[0].somacargo;
                     }
                     if (cad[i].codcargo == 2)
                     {
+
                         cad[i].salariofunc = cargo[1].salario;
-                        cargo[1].somacargo = cargo[1].somacargo + cad[i].salariofunc;
+                        cargo[1].somacargo = cad[i].salariofunc + cargo[1].somacargo;
                     }
                     if (cad[i].codcargo == 3)
                     {
+
                         cad[i].salariofunc = cargo[2].salario;
-                        cargo[2].somacargo = cargo[2].somacargo + cad[i].salariofunc;
+                        cargo[2].somacargo = cad[i].salariofunc + cargo[2].somacargo;
                     }
                 }
             }
         }
         system("cls");
 
-        for (i = 0; i < cad[i].stop; i++) // MOSTRANDO A ALTERAÇÃO FEITA
+        for (i = 0; i < stop; i++) // MOSTRANDO A ALTERAÇÃO FEITA
         {
             printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }

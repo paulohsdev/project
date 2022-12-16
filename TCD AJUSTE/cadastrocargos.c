@@ -19,8 +19,16 @@ typedef struct
 } cadastro;
 cadastro cad[10];
 
+int stop;
+
+cadastro aux;
+car aux1;
+
 void cargos()
 {
+    cargo[0].somacargo = 0;
+    cargo[1].somacargo = 0;
+    cargo[2].somacargo = 0;
 
     int i = 0, op, codpesquisa;
     system("cls");
@@ -28,7 +36,6 @@ void cargos()
 
     printf("1 - Cadastrar cargos\n");
     printf("2 - Alterar cargos\n");
-    printf("teste;");
     scanf("%d", &op);
 
     switch (op) // CADASTRO DOS CARGOS DA EMPRESA
@@ -58,18 +65,14 @@ void cargos()
         printf("Digite o codigo do cargo que deseja alterar ");
         scanf("%d", &codpesquisa);
 
-        cargo[0].somacargo = 0;
-        cargo[1].somacargo = 0;
-        cargo[2].somacargo = 0;
-
-        for (i = 0; i < 3; i++)
+        for (i = 0; i < stop; i++)
         {
             if (cargo[i].codcargo == codpesquisa)
             {
                 printf("Cargo: %d\n", cargo[i].codcargo);
                 printf("salário: %.2f\n", cargo[i].salario);
 
-                printf("Digite o novo cï¿½digo do cargo: ");
+                printf("Digite o novo código do cargo: ");
                 scanf("%d", &cargo[i].codcargo);
 
                 printf("Digite o novo salário do cargo: ");
@@ -78,20 +81,21 @@ void cargos()
                 printf("Cargo: %d\n", cargo[i].codcargo);
                 printf("salário: %.2f\n", cargo[i].salario);
                 system("pause");
+
                 if (cad[i].codcargo == 1) // ALTERANDO TAMBÉM O SALÁRIO DOS FUNCIONÁRIOS
                 {
                     cad[i].salariofunc = cargo[0].salario;
-                    cargo[0].somacargo = cargo[0].somacargo + cad[i].salariofunc;
+                    cargo[0].somacargo = cad[i].salariofunc + cargo[0].somacargo;
                 }
                 if (cad[i].codcargo == 2)
                 {
                     cad[i].salariofunc = cargo[1].salario;
-                    cargo[1].somacargo = cargo[1].somacargo + cad[i].salariofunc;
+                    cargo[1].somacargo = cad[i].salariofunc + cargo[1].somacargo;
                 }
                 if (cad[i].codcargo == 3)
                 {
                     cad[i].salariofunc = cargo[2].salario;
-                    cargo[2].somacargo = cargo[2].somacargo + cad[i].salariofunc;
+                    cargo[2].somacargo = cad[i].salariofunc + cargo[2].somacargo;
                 }
             }
         }

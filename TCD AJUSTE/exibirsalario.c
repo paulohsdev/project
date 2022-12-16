@@ -16,7 +16,11 @@ typedef struct
     int codfunc, codcargo, stop, nrua, cep;
     float salariofunc, mediasalarial;
 } cadastro;
+
 cadastro cad[10];
+cadastro aux;
+car aux1;
+int stop;
 
 void exibirsalario()
 {
