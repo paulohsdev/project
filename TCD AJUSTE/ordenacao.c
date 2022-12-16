@@ -23,10 +23,10 @@ car aux1;
 
 int stop;
 
-printf("Teste do Boss");
-
 void ordenacao()
 {
+
+    printf("Teste");
 
     int op, i, j, x, y, r;
 
