@@ -1,8 +1,12 @@
+// BIBLIOTECAS UTILIZADAS
+
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
 #include <stdlib.h>
 #include <windows.h>
+
+//  REGIÃO DAS FUNÇÕES
 
 void cargos();
 void cadastrofunc();
@@ -11,24 +15,12 @@ void relatorio();
 void exibirsalario();
 void mediasalarial();
 
-// * REGIÃO DAS STRUCTS
-typedef struct
-{
-    int codcargo;
-    float salario, somacargo;
-
-} car;
-car cargo[3];
-
 int main()
 {
     int op;
 
-    cargo[0].codcargo = 0;
-    cargo[1].codcargo = 0;
-    cargo[2].codcargo = 0;
-
     setlocale(LC_ALL, "");
+
     do
     {
         system("cls");

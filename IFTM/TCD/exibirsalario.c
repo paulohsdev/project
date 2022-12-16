@@ -12,25 +12,22 @@ car cargo[3];
 
 typedef struct
 {
-    char rua[50], bairro[50], estado[3], cidade[50];
-    int nrua, cep;
-} endereco;
-endereco endfunc[10];
-
-typedef struct
-{
-    char nomefunc[50], copnome[50];
-    int codfunc, codcargo, stop, copcargo;
-    endereco endfunc;
-    float salariofunc, salariocop, mediasalarial;
+    char nomefunc[50], rua[50], bairro[50], estado[3], cidade[50];
+    int codfunc, codcargo, stop, nrua, cep;
+    float salariofunc, mediasalarial;
 } cadastro;
+
 cadastro cad[10];
+cadastro aux;
+car aux1;
+int stop;
 
 void exibirsalario()
 {
-    setlocale(LC_ALL, "");
 
     int i, op;
+
+    setlocale(LC_ALL, ""); // EXIBINDO A SOMA DE TODOS OS FUNCIONÁRIOS DE UM DETERMINADO CARGO
 
     printf("1 - Soma dos cargos 1\n");
     printf("2 - Soma dos cargos 2\n");

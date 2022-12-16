@@ -5,24 +5,28 @@
 
 typedef struct
 {
-    char rua[50], bairro[50], estado[3], cidade[50];
-    int nrua, cep;
-} endereco;
-endereco endfunc[10];
+    int codcargo;
+    float salario, somacargo;
+} car;
+car cargo[3];
 
 typedef struct
 {
-    char nomefunc[50], copnome[50];
-    int codfunc, codcargo, stop, copcargo;
-    endereco endfunc;
-    float salariofunc, salariocop;
+    char nomefunc[50], rua[50], bairro[50], estado[3], cidade[50];
+    int codfunc, codcargo, stop, nrua, cep;
+    float salariofunc, mediasalarial;
 } cadastro;
+
 cadastro cad[10];
+cadastro aux;
+car aux1;
+
+int stop;
 
 void ordenacao()
 {
-    int op, i, j, x, y, r, aux1, aux3;
-    char aux[50], aux2[50];
+
+    int op, i, j, x, y, r;
 
     setlocale(LC_ALL, "");
 
@@ -37,119 +41,122 @@ void ordenacao()
     case 1: // * CLASSIFICAR ORDEM ALFABÉTICA A-Z
         system("cls");
 
-        for (x = 0; x < cad[x].stop; x++)
+        for (x = 0; x < stop; x++)
         {
-
-            for (y = x + 1; y < cad[y].stop; y++)
+            for (y = x + 1; y < stop; y++)
             {
-                if (strcmp(cad[x].copnome, cad[y].copnome) > 0)
+
+                if (strcmp(cad[x].nomefunc, cad[y].nomefunc) > 0) // VERIFICA QUAL NOME É MAIOR
                 {
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    strcpy(aux, cad[x].copnome);
-                    strcpy(cad[x].copnome, cad[y].copnome);
-                    strcpy(cad[y].copnome, aux);
-
-                    aux1 = cad[x].salariocop;
-                    cad[x].salariocop = cad[y].salariocop;
-                    cad[y].salariocop = aux1;
-
-                    // aux1 = cad[x].copcargo;
-                    // cad[x].copcargo = cad[y].copcargo;
-                    // cad[y].copcargo = aux1;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
 
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < stop; i++) // EXIBIÇÃO ORDENADA DE A-Z
         {
-            printf("Nome: %s", cad[i].copnome);
+            printf("\nNome: %s", cad[i].nomefunc);
+            printf("Rua: %s", cad[i].rua);
+            printf("Bairro: %s", cad[i].bairro);
+            printf("Estado: %s", cad[i].estado);
+            printf("Cidade: %s", cad[i].cidade);
+            printf("CEP: %d\n", cad[i].cep);
+            printf("Cargo: %d\n", cad[i].codcargo);
+            printf("Codigo funcionário: %d\n", cad[i].codfunc);
+            printf("Nº Rua: %d\n", cad[i].nrua);
+            printf("Salário: %.2f\n", cad[i].salariofunc);
         }
+
         system("pause");
         break;
     case 2: // * CLASSIFICAR ORDEM ALFABÉTICA Z-A
         system("cls");
-        for (x = 0; x < cad[x].stop; x++)
+        for (x = 0; x < stop; x++)
         {
-            for (y = x + 1; y < cad[y].stop; y++)
+            for (y = x + 1; y < stop; y++)
             {
-                if (strcmp(cad[x].copnome, cad[y].copnome) < 0)
+                if (strcmp(cad[x].nomefunc, cad[y].nomefunc) < 0)
                 {
-                    strcpy(aux, cad[x].copnome);
-                    strcpy(cad[x].copnome, cad[y].copnome);
-                    strcpy(cad[y].copnome, aux);
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    aux1 = cad[x].salariocop;
-                    cad[x].salariocop = cad[y].salariocop;
-                    cad[y].salariocop = aux1;
-
-                    // aux1 = cad[x].copcargo;
-                    // cad[x].copcargo = cad[y].copcargo;
-                    // cad[y].copcargo = aux1;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < stop; i++)
         {
-            printf("Nome: %s", cad[i].copnome);
+            printf("\nNome: %s", cad[i].nomefunc);
+            printf("Rua: %s", cad[i].rua);
+            printf("Bairro: %s", cad[i].bairro);
+            printf("Estado: %s", cad[i].estado);
+            printf("Cidade: %s", cad[i].cidade);
+            printf("CEP: %d\n", cad[i].cep);
+            printf("Cargo: %d\n", cad[i].codcargo);
+            printf("Codigo funcionário: %d\n", cad[i].codfunc);
+            printf("Nº Rua: %d\n", cad[i].nrua);
+            printf("Salário: %.2f\n", cad[i].salariofunc);
         }
+
         system("pause");
         break;
-    case 3: // * ORDENAR SALÁRIO CRESCENTE
+    case 3:
         system("cls");
-        for (x = 0; x < cad[x].stop; x++)
+        for (x = 0; x < stop; x++)
         {
-            for (y = x + 1; y < cad[y].stop; y++)
+            for (y = x + 1; y < stop; y++)
             {
-                if (cad[x].salariocop > cad[y].salariocop)
+                if (cad[x].salariofunc > cad[y].salariofunc) // VERIFICA QUAL SALÁRIO É MENOR
                 {
-                    strcpy(aux, cad[x].copnome);
-                    strcpy(cad[x].copnome, cad[y].copnome);
-                    strcpy(cad[y].copnome, aux);
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    aux1 = cad[x].salariocop;
-                    cad[x].salariocop = cad[y].salariocop;
-                    cad[y].salariocop = aux1;
-
-                    // aux1 = cad[x].copcargo;
-                    // cad[x].copcargo = cad[y].copcargo;
-                    // cad[y].copcargo = aux1;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
 
-        for (i = 0; i < cad[i].stop; i++)
+        for (i = 0; i < stop; i++) // EXIBIÇÃO POR ORDEM CRESCENTE DO SALÁRIO
         {
-            printf("Nome: %sSalário: %.2f\n\n", cad[i].copnome, cad[i].salariocop);
+            printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }
         system("pause");
         break;
 
     case 4: // * SALÁRIO DECRESCENTE
         system("cls");
-        for (x = 0; x < cad[x].stop; x++)
+        for (x = 0; x < stop; x++)
         {
-            for (y = x + 1; y < cad[y].stop; y++)
+            for (y = x + 1; y < stop; y++)
             {
-                if (cad[x].salariocop < cad[y].salariocop)
+                if (cad[x].salariofunc < cad[y].salariofunc) // VERIFICA QUAL SALÁRIO É MENOR
                 {
-                    strcpy(aux, cad[x].copnome);
-                    strcpy(cad[x].copnome, cad[y].copnome);
-                    strcpy(cad[y].copnome, aux);
+                    aux = cad[x];
+                    cad[x] = cad[y];
+                    cad[y] = aux;
 
-                    aux1 = cad[x].salariocop;
-                    cad[x].salariocop = cad[y].salariocop;
-                    cad[y].salariocop = aux1;
-
-                    // aux1 = cad[x].copcargo;
-                    // cad[x].copcargo = cad[y].copcargo;
-                    // cad[y].copcargo = aux1;
+                    aux1 = cargo[x];
+                    cargo[x] = cargo[y];
+                    cargo[y] = aux1;
                 }
             }
         }
 
-        for (i = 0; cad[i].stop != 0; i++)
+        for (i = 0; i < stop; i++) // EXIBIÇÃO POR ORDEM DECRESCENTE DO SALÁRIO
         {
-            printf("Nome: %sSalário: %.2f\n\n", cad[i].copnome, cad[i].salariocop);
+            printf("Nome: %sSalário: %.2f\n\n", cad[i].nomefunc, cad[i].salariofunc);
         }
         system("pause");
         break;

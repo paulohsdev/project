@@ -12,32 +12,27 @@ car cargo[3];
 
 typedef struct
 {
-    char rua[50], bairro[50], estado[3], cidade[50];
-    int nrua, cep;
-} endereco;
-endereco endfunc[10];
-
-typedef struct
-{
-    char nomefunc[50], copnome[50];
-    int codfunc, codcargo, stop, copcargo;
-    endereco endfunc;
-    float salariofunc, salariocop, mediasalarial;
+    char nomefunc[50], rua[50], bairro[50], estado[3], cidade[50];
+    int codfunc, codcargo, stop, nrua, cep;
+    float salariofunc, mediasalarial;
 } cadastro;
 cadastro cad[10];
+int stop;
 
-void mediasalarial()
+cadastro aux;
+car aux1;
+
+void mediasalarial() // EXIBINDO A MÉDIA SALÁRIAL
 {
     int i, aux = 0;
     float media = 0;
 
-    for (i = 0; i < cad[i].stop; i++)
+    for (i = 0; i < stop; i++)
     {
         aux++;
         media = cad[i].salariofunc + media;
-        printf("O valor da média  é: %.2f\n", media);
     }
-    
+
     media = media / aux;
     printf("A média salarial de todos os funcionários é: R$%.2f\n", media);
     system("pause");
