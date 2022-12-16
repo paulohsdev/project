@@ -26,7 +26,7 @@ int stop;
 void ordenacao()
 {
 
-    printf("lol");
+    printf("Teste");
 
     int op, i, j, x, y, r;
 
