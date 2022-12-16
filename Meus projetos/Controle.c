@@ -6,9 +6,24 @@
 
 #define SIZE 10
 
-float receitas[SIZE], despesas[SIZE], total;
-int painel, contdes = 0, contrec = 0, op, i;
-char nomereceita[SIZE][50], nomedespesa[SIZE][50];
+typedef struct
+{
+    float receitas, despesas, total;
+    int painel, contdes, contrec;
+    char nomereceita, nomedespesa;
+
+} financas;
+
+typedef struct
+{
+
+    float periodo, juros, investimento, total, rendimento, totalinvestido, valorinvestido, rendimentomensal;
+
+} investimento;
+
+investimento inv;
+financas fin;
+int op, painel, contrec, contdes, i;
 
 int main(void)
 {
@@ -56,31 +71,28 @@ int main(void)
 void juroscompostos()
 {
 
-    float periodo;
-    float juros, investimento, total, rendimento, totalinvestido, valorinvestido, rendimentomensal;
-
     printf("Digite o valor que será investido mensalmente: ");
-    scanf("%f", &investimento);
+    scanf("%f", &inv.investimento);
 
     printf("Digite quantos meses irá investir: ");
-    scanf("%f", &periodo);
+    scanf("%f", &inv.periodo);
 
     printf("Digite a taxa de juros anual: ");
-    scanf("%f", &juros);
+    scanf("%f", &inv.juros);
 
-    juros = juros / 100 / 12;
-    totalinvestido = investimento * periodo;
+    inv.juros = inv.juros / 100 / 12;
+    inv.totalinvestido = inv.investimento * inv.periodo;
 
-    total = investimento * ((pow((1 + juros), periodo) - 1) / juros);
-    rendimento = total - totalinvestido;
-    valorinvestido = total - rendimento;
-    rendimentomensal = rendimento / 12;
+    inv.total = inv.investimento * ((pow((1 + inv.juros), inv.periodo) - 1) / inv.juros);
+    inv.rendimento = inv.total - inv.totalinvestido;
+    inv.valorinvestido = inv.total - inv.rendimento;
+    inv.rendimentomensal = inv.rendimento / 12;
 
     system("cls");
-    printf("O valor total será de: R$ %.2f reais\n", total);
-    printf("O valor dos rendimentos será: R$ %.2f reais \n", rendimento);
-    printf("O valor investido foi: R$ %.2f reais\n", valorinvestido);
-    printf("O rendimento mensal será de: %.2f \n\n", rendimentomensal);
+    printf("O valor total será de: R$ %.2f reais\n", inv.total);
+    printf("O valor dos rendimentos será: R$ %.2f reais \n", inv.rendimento);
+    printf("O valor investido foi: R$ %.2f reais\n", inv.valorinvestido);
+    printf("O rendimento mensal será de: %.2f \n\n", inv.rendimentomensal);
 }
 void jurossimples()
 {
@@ -163,10 +175,10 @@ void receitasdespesas()
 
             printf("Nome da receita: ");
             fflush(stdin);
-            scanf("%[^\n]", nomereceita[linha]);
+            scanf("%[^\n]", fin.nomereceita);
             printf("Digite o valor da receita: ");
             fflush(stdin);
-            scanf("%f", &receitas[linha]);
+            scanf("%f", &fin.receitas);
             system("cls");
             printf("1 - Continuar cadastro: \n");
             printf("2 - sair: \n");
@@ -182,19 +194,18 @@ void receitasdespesas()
             printf("Nome da despesa: ");
             fflush(stdin);
             // fgets(nomedespesa[linha], 100, stdin);
-            scanf("%[^\n]", nomedespesa[linha]);
+            scanf("%[^\n]", fin.nomedespesa);
             system("cls");
             printf("Digite o valor da despesa: ");
-            scanf("%f", &despesas[linha]);
+            scanf("%f", &fin.despesas);
             system("cls");
             printf("1 - Continuar cadastro:\n");
             printf("2 - Sair:\n");
             scanf("%d", &painel);
             system("cls");
             fflush(stdin);
-            total = total + despesas[linha];
+            fin.total = fin.total + fin.despesas;
             contdes++;
-            linha++;
 
         } while (painel == 1);
         return receitasdespesas();
@@ -203,14 +214,14 @@ void receitasdespesas()
         printf("\n");
         for (i = 0; i < contdes; i++)
         {
-            printf("%s: R$%.2f\n", nomedespesa[i], despesas[i]);
+            printf("%s: R$%.2f\n", fin.nomedespesa[i], fin.despesas[i]);
         }
-        printf("\nO valot total é: %.2f", total);
+        printf("\nO valot total é: %.2f", fin.total);
         break;
     case 4:
         for (i = 0; i < contrec; i++)
         {
-            printf("\n%s: R$ %.2f", nomereceita[i], receitas[i]);
+            printf("\n%s: R$ %.2f", fin.nomereceita[i], fin.receitas[i]);
         }
         break;
     }
@@ -220,6 +231,7 @@ void receitasdespesas()
 
 void dieta() // * ADICIONAR VARIAVEIS
 {
+
     float altura, peso, imc, geb, get, deficit, superavit, pesoideal, qntagua;
     char sexo[2], nome[50];
     int perda, idade, sexom, ganho;
