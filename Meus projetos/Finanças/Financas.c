@@ -20,15 +20,32 @@ receitas rec[3][3];
 
 typedef struct
 {
-    float investimento, juros, rendimento, vlinvestido, rendimentomensal, total, totalinvestido;
+    float investimento, juros, rendimento, vlinvestido, rendimentomensal, total, totalinvestido, montante;
     int periodo;
 
-} jurossimples;
-jurossimples js;
+} vlfuturo;
+vlfuturo vf;
+
+typedef struct
+{
+    float montante, txjuros, subtotal, juros, rendimentoliq, rendimentomensal, vlimposto;
+    int periodo;
+
+} juroscompostoss;
+juroscompostoss jc;
+
+typedef struct
+{
+    float capitalaplicado, vlfinal, juros, txjuros, rendimento;
+    int tempo;
+} jurossimpless;
+jurossimpless js;
 
 void cadastrodespesa();
 void cadastroreceitas();
+void valorfuturo();
 void juroscompostos();
+void jurossimples();
 
 int main()
 {
@@ -37,9 +54,9 @@ int main()
 
     printf("1 -  Cadastrar despesas\n");
     printf("2 -  Cadastrar receitas\n");
-    printf("3 -  Juros compostos\n");
-    printf("4 -  Mostrar receitas\n");
-    printf("5 -  Sair\n");
+    printf("3 -  Valor futuro do investimento mensal\n");
+    printf("4 -  Juros compostos\n");
+    printf("5 -  Juros simples\n");
     scanf("%d", &op);
 
     switch (op)
@@ -51,11 +68,13 @@ int main()
         cadastroreceitas();
         break;
     case 3:
-        juroscompostos();
+        valorfuturo();
         break;
     case 4:
+        juroscompostos();
         break;
     case 5:
+        jurossimples();
         break;
     }
 }
@@ -135,29 +154,73 @@ void cadastroreceitas()
     }
     printf("Total Anual: %.2f\n", total);
 }
-void juroscompostos()
+void valorfuturo() // VALOR FUTURO DE UMA APLICAÇÃI MENSAL
 {
-    float totalinvestido = 0;
     printf("Digite o valor que será investido mensalmente: ");
-    scanf("%f", &js.investimento);
+    scanf("%f", &vf.investimento);
 
     printf("Digite quantos meses irá investir: ");
-    scanf("%d", &js.periodo);
+    scanf("%d", &vf.periodo);
 
     printf("Digite a taxa de juros anual: ");
-    scanf("%f", &js.juros);
+    scanf("%f", &vf.juros);
 
-    js.juros = js.juros / 100 / 12;
-    js.totalinvestido = js.investimento * js.periodo;
+    vf.juros = (vf.juros / 100) / 12;
+    vf.totalinvestido = vf.investimento * vf.periodo;
 
-    js.total = js.investimento * ((pow((1 + js.juros), js.periodo) - 1) / js.juros);
-    js.rendimento = js.total - js.totalinvestido;
-    js.vlinvestido = js.total - js.rendimento;
-    js.rendimentomensal = js.rendimento / 12;
+    vf.total = (vf.investimento * (pow((1 + vf.juros), vf.periodo) - 1) / vf.juros);
+    vf.rendimento = vf.total - vf.totalinvestido;
+    vf.vlinvestido = vf.total - vf.rendimento;
+    vf.rendimentomensal = vf.rendimento / 12;
 
     system("cls");
-    printf("O valor total investido será de: R$ %.2f reais\n", js.totalinvestido);
-    printf("O valor dos rendimentos será: R$ %.2f reais \n", js.rendimento);
-    printf("O valor investido foi: R$ %.2f reais\n", js.vlinvestido);
-    printf("O rendimento mensal será de: %.2f \n\n", js.rendimentomensal);
+    printf("O valor total com juros será de: R$ %.2f reais\n", vf.total);
+    printf("O valor dos rendimentos será: R$ %.2f reais \n", vf.rendimento);
+    printf("O valor investido foi: R$ %.2f reais\n", vf.vlinvestido);
+    printf("O rendimento mensal será de: %.2f \n\n", vf.rendimentomensal);
+}
+
+void juroscompostos()
+{
+    printf("Qual o montante inical? \n");
+    scanf("%f", &jc.montante);
+
+    printf("Quantos meses de investimento? \n");
+    scanf("%d", &jc.periodo);
+
+    printf("Qual a taxa de juros anual? \n");
+    scanf("%f", &jc.txjuros);
+
+    jc.txjuros = jc.txjuros / 100 / 12;
+    jc.subtotal = jc.montante * pow((1 + jc.txjuros), jc.periodo);
+    jc.juros = jc.subtotal - jc.montante;
+    jc.vlimposto = jc.juros * 0.20;
+    jc.rendimentoliq = jc.juros - (jc.juros * 0.20);
+    jc.rendimentomensal = jc.rendimentoliq / 12;
+
+    printf("O valor total será de: R$%.2f\n", jc.subtotal);
+    printf("O rendimento foi de R$ %.2f\n", jc.juros);
+    printf("O valor do imposto de renda será de: R$%.2f\n", jc.vlimposto);
+    printf("O rendimento líquido será de R$ %.2f\n", jc.rendimentoliq);
+    printf("O rendimento mensal será de: %.2f \n\n", jc.rendimentomensal);
+}
+void jurossimples()
+{
+
+    printf("Digite o valor do investimento: ");
+    scanf("%f", &js.capitalaplicado);
+
+    printf("Qual a taxa de juros anual: ");
+    scanf("%f", &js.txjuros);
+
+    printf("Quanto tempo de investimento: ");
+    scanf("%d", &js.tempo);
+
+    js.txjuros = js.txjuros / 100;
+
+    js.vlfinal = js.capitalaplicado * js.txjuros * js.tempo;
+    js.rendimento = js.vlfinal - js.capitalaplicado;
+
+    printf("O valor final e de R$%.2f\n", js.vlfinal);
+    printf("O rendimento foi de: R$%.2f\n", js.rendimento);
 }
